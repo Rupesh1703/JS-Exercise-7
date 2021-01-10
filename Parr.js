@@ -12,28 +12,28 @@ for(let i=0;i<10;++i)
 
 while(roww_one<=roww_two && colum_one<=colum_two){
 
-    for(let i=colum_one;i<=colum_two;++i)
+    for(let j=colum_one;j<=colum_two;j++)
   {
-  arr[roww_one][i]=count;
+  arr[roww_one][j]=count;
     count++;
     }
 
-    for (let i=roww_one+1;i<=roww_two;++i)
+    for (let k=roww_one+1;k<=roww_two;k++)
     {
-        arr[i][colum_two]=count;
+        arr[k][colum_two]=count;
         count++;
     }
     if (roww_one<roww_two && colum_one<colum_two) 
     {
         
-        for (let i=colum_two-1;i>colum_one;i--)
+        for (let l=colum_two-1;l>colum_one;l--)
         {
-            arr[roww_two][i]=count;
+            arr[roww_two][l]=count;
             count++;
         }
-        for (let i=roww_two;i>roww_one;i--)
+        for (let m=roww_two;m>roww_one;m--)
         {
-            arr[i][colum_one]=count;
+            arr[m][colum_one]=count;
             count++;
         }
     }
