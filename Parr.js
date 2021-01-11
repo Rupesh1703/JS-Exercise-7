@@ -1,48 +1,58 @@
 
-let roww_one=0
-let roww_two=9
-let colum_one=0
-let colum_two=9
-let arr=[];
-let count=1;
-for(let i=0;i<10;++i)
-{
- arr[i]=[];
-}
-
-while(roww_one<=roww_two && colum_one<=colum_two){
-
-    for(let j=colum_one;j<=colum_two;j++)
-  {
-  arr[roww_one][j]=count;
-    count++;
+    let row_one = 10;
+    let col_one = 10;
+    let row_tre = row_one - 1;
+   
+    let col = col_one - 1;
+ 
+    let start = 1;
+    let count = 0;
+    let aary = [];
+    for (let row_two = 0; row_two < row_one; row_two++) {
+        aary[row_two] = [];
+        for (let col_two = 0; col_two < col_one; col_two++) {
+            aary[row_two][col_two] = 0;
+        }
     }
-
-    for (let k=roww_one+1;k<=roww_two;k++)
-    {
-        arr[k][colum_two]=count;
-        count++;
-    }
-    if (roww_one<roww_two && colum_one<colum_two) 
-    {
+ 
+    
+    
+    
+    for(let row=0;row <= row_tre;row++) {
+        for(let left=0;left<=col;left++){
+        if(count % 4==0) {
+            
+                for (let col_two = left; col_two <= col; col_two++) {
+                    aary[row][col_two] = start++;
+                }
+                
+                var r=row++;
+                count++;
+            }
+            if(count%4==1){
+                for (let row_two = r+1; row_two <= row_tre; row_two++) {
+                    aary[row_two][col] = start++;
+                }
+                col--;
+                count++;
+            }
+            if(count%4==2){
+                for (let col_two = col; col_two >= left; col_two--) {
+                    aary[row_tre][col_two] = start++;
+                }
+                row_tre--;
+                count++;
+            }
+            if(count%4==3){
+                for (let row_two = row_tre; row_two >= row; row_two--) {
+                    aary[row_two][left] = start++;
+                }
+                
+                count++;
+            }
         
-        for (let l=colum_two-1;l>colum_one;l--)
-        {
-            arr[roww_two][l]=count;
-            count++;
-        }
-        for (let m=roww_two;m>roww_one;m--)
-        {
-            arr[m][colum_one]=count;
-            count++;
-        }
     }
-    roww_one++;
-    roww_two--;
-    colum_one++;
-    colum_two--;
-}
-//console.log(arr);
-//console.log(arr.map(r => r))
-//console.log(arr.map(r=>r.concat()))
-console.log(arr.map(r => r.join(' ')).join('\n'))
+    
+    }
+    
+    console.log(aary.map(r => r.join(' ')).join('\n'));
